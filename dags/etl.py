@@ -17,7 +17,6 @@ with DAG(
     dag_id="example_elt_pipeline",
     default_args=default_args,
     description="ETL process load example data from generated data into PortgresDB",
-    schedule_interval="@daily",
     start_date=datetime(2025, 8, 26),
     catchup=False,
     tags=["example", "etl", "database"],
