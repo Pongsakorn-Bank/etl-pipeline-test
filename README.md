@@ -15,19 +15,18 @@ git clone https://github.com/Pongsakorn-Bank/etl-pipeline-test.git
 ```
 2. Enviroment variables (.env) configuration (see example in env.example and replace <YOUR_VALUE> with value that you want) for example
 ``` bash
-# PostgreSQL
-POSTGRES_HOST=host.docker.internal
-POSTGRES_PORT=5432
-POSTGRES_AIRFLOW_DB=airflow
-POSTGRES_USER=airflow
-POSTGRES_PASSWORD=airflow
+AIRFLOW_UID=50000
+_AIRFLOW_WWW_USER_USERNAME="<YOUR_VALUE>"
+_AIRFLOW_WWW_USER_PASSWORD="<YOUR_VALUE>"
+_AIRFLOW_WWW_USER_FIRSTNAME="<YOUR_VALUE>"
+_AIRFLOW_WWW_USER_LASTNAME="<YOUR_VALUE>"
+_AIRFLOW_WWW_USER_EMAIL="<YOUR_VALUE>"
 
-# Airflow
-_AIRFLOW_WWW_USER_USERNAME=admin
-_AIRFLOW_WWW_USER_PASSWORD=admin
-_AIRFLOW_WWW_USER_FIRSTNAME=Admin
-_AIRFLOW_WWW_USER_LASTNAME=User
-_AIRFLOW_WWW_USER_EMAIL=admin@example.com
+POSTGRES_HOST="host.docker.internal"
+POSTGRES_PORT="5432"
+POSTGRES_AIRFLOW_DB="airflow"
+POSTGRES_USER="<YOUR_VALUE>"
+POSTGRES_PASSWORD="<YOUR_VALUE>"
 ```
 
 3. Run docker compose
@@ -42,19 +41,20 @@ docker compose up -d
 # Airflow webserver at http://localhost:8080
 ```
 
-## Execute task with Airflow
+## Execute task in Airflow
 
 In DAGs page you will see 'example_etl_pipeline' DAG installed, this DAG conatin 2 tasks and execute by BashOperator method
 1. generate_data (from /data/sampledata.py)
 2. load_data (load generated data into Postgres)
 
 <td align="center" style="vertical-align: middle; padding: 10px; border: none; width: 250px;">
-  <img src="assets/example_etl_pipeline_dag.png" alt="DAG" width="200" style="margin: 0; padding: 0; display: block;"/>
+  <img src="assets/example_etl_pipeline_dag.png" alt="DAG" width="500" style="margin: 0; padding: 0; display: block;"/>
 </td>
 
 ### Steps
 1. Enter 'example_etl_pipeline' DAG and click Trigger then select 'Single Run' and click 'Trigger'
 2. Check task processing
+3. Check data ingestion in tabel 'data_sample'
 
 ## Reference documents
 - Airflow <br>
