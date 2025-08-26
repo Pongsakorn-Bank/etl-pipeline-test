@@ -34,7 +34,7 @@ POSTGRES_PASSWORD="<YOUR_VALUE>"
 
 3. Run docker compose
 ``` bash
-docker compos build
+docker compose build
 docker compose up -d
 ```
 
