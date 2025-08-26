@@ -7,7 +7,7 @@ load_dotenv()
 #Cofig con
 conn_params = {
     "host": os.environ.get("POSTGRES_HOST"),
-    "dbname": os.environ.get("POSTGRES_WAREHOUSE_DB"),
+    "dbname": "dw",
     "username": os.environ.get("POSTGRES_USER"),
     "password": os.environ.get("POSTGRES_PASSWORD"),
     "port": os.environ.get("POSTGRES_PORT")

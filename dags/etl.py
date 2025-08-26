@@ -22,10 +22,10 @@ with DAG(
     tags=["example", "etl", "database"],
 ) as dag:
 
-    task_generate_data = BashOperator(
-        task_id="generate_data",
-        bash_command="python /opt/airflow/data/sampledata.py",
-    )
+    # task_generate_data = BashOperator(
+    #     task_id="generate_data",
+    #     bash_command="python /opt/airflow/data/sampledata.py",
+    # )
 
     task_load_data = BashOperator(
         task_id="load_data",
@@ -34,5 +34,5 @@ with DAG(
     )
 
     # Task
-    # task_load_data
-    task_generate_data.set_downstream(task_load_data)
+    task_load_data
+    # task_generate_data.set_downstream(task_load_data)
