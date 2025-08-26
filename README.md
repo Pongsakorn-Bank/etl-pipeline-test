@@ -3,6 +3,9 @@
 This repository contains example pipeline tesing for ETL process that load generated data into Postgres database
 
 ---
+## Main task for this project
+1. Generate data from sampledata.py
+2. Ingest data into PostgresDB
 
 ## Requirements
 - Python 3.9+
@@ -41,9 +44,18 @@ docker compose up -d
 # Airflow webserver at http://localhost:8080
 ```
 
-## Execute task in Airflow
+# Table design
+From data generated detail, there are 5 columns department_name, sensor_serial, create_at, product_name and product_expire<br>
+Columns department_name, sensor_serial and product_name are random generated value with specific number of characters 32, 64 and 16 respectively<br>
+So The destination for this project will have table schema like iamge below and named 'data_sample' table<br>
+<td align="center" style="vertical-align: middle; padding: 10px; border: none; width: 250px;">
+  <img src="assets/example_erd_data_sample.png" alt="DAG" width="500" style="margin: 0; padding: 0; display: block;"/>
+</td>
 
-In DAGs page you will see 'example_etl_pipeline' DAG installed, this DAG conatin 2 tasks and execute by BashOperator method
+
+# Execute task in Airflow
+
+In DAGs page you will see 'example_etl_pipeline' DAG installed, this DAG contain 2 tasks and execute by BashOperator method
 1. generate_data (from /data/sampledata.py)
 2. load_data (load generated data into Postgres)
 
@@ -54,7 +66,7 @@ In DAGs page you will see 'example_etl_pipeline' DAG installed, this DAG conatin
 ### Steps
 1. Enter 'example_etl_pipeline' DAG and click Trigger then select 'Single Run' and click 'Trigger'
 2. Check task processing
-3. Check data ingestion in tabel 'data_sample'
+3. Check data ingestion in table 'data_sample'
 
 ## Reference documents
 - Airflow <br>
